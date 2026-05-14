@@ -1,0 +1,18 @@
+# Secrets — NEVER commit. Holds the Resend API key.
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# FUSE filesystem leftovers (stale "deleted but in use" files)
+.fuse_hidden*
+
+# Editor / OS cruft
+Thumbs.db
+*.swp
+*~
+
+# Node (Vercel remnants — safe to remove the api/ folder and package.json too)
+node_modules/

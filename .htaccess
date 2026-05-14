@@ -1,0 +1,19 @@
+# Pax Ranch House — server config (Apache / GoDaddy shared hosting)
+
+# --- Protect sensitive files from direct web access -------------------------
+# Without this, anyone could open https://paxranch.com/.env and steal the
+# Resend API key. This blocks .env and other dotfiles.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Fallback for older Apache (2.2)
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^\.">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# --- Default document --------------------------------------------------------
+DirectoryIndex index.html

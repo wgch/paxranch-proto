@@ -143,18 +143,20 @@
       <h2>Tell us about your stay.</h2>
       <p style="max-width:520px;margin:20px auto 0;color:var(--charcoal)">For flexible dates, exclusive-use enquiries, or to plan something special, we'll reply personally within 24 hours.</p>
     </div>
-    <form class="form" onsubmit="event.preventDefault();alert('Thank you — we\u2019ll be in touch shortly.');">
-      <div><label>Full Name</label><input required></div>
-      <div><label>Email</label><input type="email" required></div>
-      <div><label>Phone</label><input type="tel"></div>
-      <div><label>Number of Guests</label><input type="number" min="1" max="18"></div>
-      <div><label>Arrival</label><input type="date"></div>
-      <div><label>Departure</label><input type="date"></div>
+    <form class="form enquiry-form" id="bookingForm" data-source="booking-page">
+      <div><label>Full Name</label><input name="name" required></div>
+      <div><label>Email</label><input type="email" name="email" required></div>
+      <div><label>Phone</label><input type="tel" name="phone"></div>
+      <div><label>Number of Guests</label><input type="number" name="guests" min="1" max="18"></div>
+      <div><label>Arrival</label><input type="date" name="arrival"></div>
+      <div><label>Departure</label><input type="date" name="departure"></div>
       <div class="full"><label>Which House?</label>
-        <select><option>The Main House</option><option>The Cottage</option><option>Whole Estate</option><option>Open to recommendation</option></select>
+        <select name="house"><option>The Main House</option><option>The Cottage</option><option>Whole Estate</option><option>Open to recommendation</option></select>
       </div>
-      <div class="full"><label>Tell Us a Little More</label><textarea placeholder="Occasion, preferences, dietary notes, experiences you'd like..."></textarea></div>
+      <div class="full"><label>Tell Us a Little More</label><textarea name="message" placeholder="Occasion, preferences, dietary notes, experiences you'd like..."></textarea></div>
+      <div class="hp" aria-hidden="true"><label>Company</label><input name="company" tabindex="-1" autocomplete="off"></div>
       <div class="full" style="margin-top:20px"><button class="btn solid" type="submit">Send Enquiry</button></div>
+      <div class="full form-status" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -182,4 +184,5 @@ document.querySelectorAll('.option-toggle button').forEach(b=>{
   });
 });
 </script>
+<script src="enquiry.js"></script>
 </body></html>

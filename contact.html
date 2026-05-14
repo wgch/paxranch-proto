@@ -71,15 +71,17 @@
       </div>
     </div>
     <div class="reveal">
-      <form class="form" style="grid-template-columns:1fr 1fr" onsubmit="event.preventDefault();alert('Thank you — we\u2019ll reply shortly.');">
-        <div class="full"><label>Name</label><input required></div>
-        <div><label>Email</label><input type="email" required></div>
-        <div><label>Phone</label><input type="tel"></div>
+      <form class="form enquiry-form" id="contactForm" style="grid-template-columns:1fr 1fr" data-source="contact-page">
+        <div class="full"><label>Name</label><input name="name" required></div>
+        <div><label>Email</label><input type="email" name="email" required></div>
+        <div><label>Phone</label><input type="tel" name="phone"></div>
         <div class="full"><label>Subject</label>
-          <select><option>Booking enquiry</option><option>Exclusive use</option><option>Weddings & events</option><option>General</option></select>
+          <select name="subject"><option>Booking enquiry</option><option>Exclusive use</option><option>Weddings & events</option><option>General</option></select>
         </div>
-        <div class="full"><label>Message</label><textarea></textarea></div>
+        <div class="full"><label>Message</label><textarea name="message"></textarea></div>
+        <div class="hp" aria-hidden="true"><label>Company</label><input name="company" tabindex="-1" autocomplete="off"></div>
         <div class="full" style="margin-top:20px"><button type="submit" class="btn solid">Send Message</button></div>
+        <div class="full form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
   </div>
@@ -111,4 +113,5 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
+<script src="enquiry.js"></script>
 </body></html>

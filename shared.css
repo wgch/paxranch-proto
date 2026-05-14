@@ -23,12 +23,36 @@ nav.site .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-s
 nav.site ul{display:flex;gap:38px;list-style:none;font-size:.78rem;text-transform:uppercase;letter-spacing:.22em}
 nav.site .cta{background:var(--clay);color:var(--cream);border:1px solid var(--clay);padding:10px 26px;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;transition:background .3s,color .3s;white-space:nowrap}
 nav.site .cta:hover{background:transparent;color:var(--clay);opacity:1}
+nav.site .menu-toggle{display:none;background:none;border:none;cursor:pointer;width:24px;height:22px;padding:0;position:relative;color:inherit}
+nav.site .menu-toggle span{position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .3s,opacity .3s}
+nav.site .menu-toggle span:nth-child(1){top:0}
+nav.site .menu-toggle span:nth-child(2){top:10px}
+nav.site .menu-toggle span:nth-child(3){top:20px}
+nav.site.open .menu-toggle span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+nav.site.open .menu-toggle span:nth-child(2){opacity:0}
+nav.site.open .menu-toggle span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
 @media(max-width:1100px){nav.site{padding:18px 28px;gap:20px}nav.site .brand{font-size:1.15rem;letter-spacing:.15em}nav.site ul{gap:22px;letter-spacing:.14em}nav.site .cta{padding:9px 18px;letter-spacing:.15em}}
-@media(max-width:860px){nav.site{padding:14px 22px}nav.site ul{display:none}nav.site .brand{font-size:1rem;letter-spacing:.15em}}
+@media(max-width:860px){
+  nav.site{padding:14px 22px}
+  nav.site .brand{font-size:1rem;letter-spacing:.15em}
+  nav.site .menu-toggle{display:block;order:3}
+  nav.site .cta{order:2;margin-left:auto;margin-right:0}
+  nav.site ul{
+    display:flex;flex-direction:column;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--cream);
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+  }
+  nav.site.open ul{max-height:420px}
+  nav.site ul li{border-top:1px solid rgba(0,0,0,.07)}
+  nav.site ul li a{display:block;padding:16px 22px;color:var(--ink);font-size:.82rem;letter-spacing:.2em}
+}
 
 .page-hero{height:70vh;min-height:520px;position:relative;display:flex;align-items:flex-end;justify-content:center;color:#fff;text-align:center;overflow:hidden}
 .page-hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);animation:slowZoom 14s ease-out forwards}
-.page-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 28%,rgba(0,0,0,.22) 58%,rgba(0,0,0,.62) 100%)}
+.page-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.34) 26%,rgba(0,0,0,.32) 52%,rgba(0,0,0,.7) 100%)}
 .page-hero .inner{position:relative;padding-bottom:9vh;max-width:900px;z-index:2}
 @keyframes slowZoom{to{transform:scale(1)}}
 
@@ -60,11 +84,12 @@ footer::before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;
 footer .grid,footer .fine{position:relative;z-index:1}
 footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;max-width:1200px;margin:0 auto}
 footer h4{font-size:1.4rem;margin-bottom:18px;letter-spacing:.05em}
+footer .footer-logo{display:block;width:78px;height:auto;margin-bottom:20px;border-radius:4px}
 footer .col p,footer .col a{font-size:.85rem;opacity:.75;display:block;margin-bottom:10px}
 footer .social{display:flex;gap:18px;margin-top:24px}
 footer .social a{display:inline-flex;opacity:.6;margin:0;transition:opacity .3s,color .3s}
 footer .social a:hover{opacity:1;color:var(--clay)}
-footer .social svg{width:20px;height:20px;display:block}
+footer .social svg{width:26px;height:26px;display:block}
 footer .fine{text-align:center;margin-top:70px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;opacity:.6}
 @media(max-width:860px){footer{padding:70px 28px 36px}footer .grid{grid-template-columns:1fr 1fr;gap:36px 24px}footer .col:first-child{grid-column:1 / -1}}
 

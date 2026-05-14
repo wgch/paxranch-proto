@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-label="Pax Ranch House">
+  <title>Pax Ranch House</title>
+  <desc>Logo: a horse on a heraldic shield within a rounded frame, above the words PAX RANCH HOUSE.</desc>
+
+  <defs>
+    <style>
+      .green { fill: #5E5635; }
+      .brown { fill: #633D24; }
+      .teal  { fill: #6B8C73; }
+      .stroke-green { fill: none; stroke: #5E5635; }
+    </style>
+  </defs>
+
+  <!-- Outer rounded frame -->
+  <rect class="stroke-green" x="14" y="14" width="372" height="452" rx="30" stroke-width="5"/>
+
+  <!-- Shield -->
+  <path class="stroke-green" stroke-width="4.5"
+        d="M133 70 H267 V165 C267 210 234 246 200 262 C166 246 133 210 133 165 Z"/>
+
+  <!-- Wave lines inside the shield base -->
+  <path class="teal" d="M150 226 q18 -13 36 -3 q20 11 40 1 q16 -8 30 1 l0 9 q-16 -9 -32 -1 q-20 10 -40 -1 q-17 -9 -34 3 Z"/>
+  <path class="teal" d="M152 238 q18 -11 35 -2 q20 10 40 0 q15 -7 28 0 l0 8 q-14 -7 -28 0 q-20 10 -40 0 q-17 -8 -35 2 Z" opacity="0.85"/>
+
+  <!-- Horse — galloping silhouette -->
+  <path class="brown" d="M168 214
+    C166 210 165 205 167 201
+    C162 198 159 192 160 186
+    C158 182 159 177 163 175
+    C168 173 173 175 176 179
+    L182 174
+    C180 168 181 161 186 157
+    C189 154 193 152 197 151
+    C199 146 203 142 208 140
+    C214 137 221 137 227 139
+    C231 134 237 131 243 131
+    C247 131 251 132 254 135
+    C258 133 263 133 267 135
+    C264 138 260 139 256 139
+    C258 143 258 148 255 152
+    C252 156 247 158 242 157
+    C240 162 237 166 232 168
+    C234 173 234 179 231 184
+    L235 189
+    C239 187 244 188 247 192
+    C249 196 248 201 245 204
+    L248 210
+    C249 213 248 217 245 218
+    C242 219 239 218 237 215
+    L233 208
+    C229 211 224 212 219 211
+    L221 218
+    C222 222 220 226 216 227
+    C213 228 209 226 208 222
+    L205 213
+    C200 213 195 211 191 208
+    C189 213 185 217 180 218
+    L182 224
+    C183 228 181 232 177 233
+    C173 234 169 232 168 228
+    L166 220
+    C166 218 166 216 168 214 Z"/>
+
+  <!-- PAX -->
+  <text x="200" y="358" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, serif" font-weight="600"
+        font-size="92" letter-spacing="6" class="green">PAX</text>
+
+  <!-- RANCH HOUSE -->
+  <text x="200" y="412" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, serif" font-weight="500"
+        font-size="38" letter-spacing="7" class="brown">RANCH HOUSE</text>
+</svg>

@@ -1,6 +1,6 @@
 /* Shared stylesheet — mirrors styles from index.html for sub-pages */
 :root{
-  --cream:#f4efe6;--bone:#ebe4d6;--sand:#d8cdb7;--clay:#b08968;
+  --cream:#ffffff;--bone:#ebe4d6;--sand:#d8cdb7;--clay:#b08968;
   --ink:#2b2620;--charcoal:#3a342c;--muted:#7a716a;--gold:#a6854c;
   --forest:#33402f;
 }

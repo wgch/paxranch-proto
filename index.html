@@ -4,9 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pax Ranch House — A Private Farmhouse Retreat in Gilgil, Kenya</title>
+<meta name="description" content="Pax Ranch House is a private two-farmhouse retreat on a working ranch in Gilgil, Kenya. Book a whole farmhouse for your family, ride horses, explore by ATV, and unwind in the Rift Valley.">
+<link rel="canonical" href="https://paxranch.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#33402f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pax Ranch House">
+<meta property="og:title" content="Pax Ranch House — A Private Farmhouse Retreat in Gilgil, Kenya">
+<meta property="og:description" content="A private two-farmhouse retreat on a working ranch in Gilgil, Kenya. A whole farmhouse to yourself — horses, ATVs, and the quiet of the Rift Valley.">
+<meta property="og:url" content="https://paxranch.com/">
+<meta property="og:image" content="https://paxranch.com/images/hero-home.jpg">
+<meta property="og:locale" content="en_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pax Ranch House — A Private Farmhouse Retreat in Gilgil, Kenya">
+<meta name="twitter:description" content="A private two-farmhouse retreat on a working ranch in Gilgil, Kenya. Horses, ATVs, and the quiet of the Rift Valley.">
+<meta name="twitter:image" content="https://paxranch.com/images/hero-home.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Pax Ranch House",
+  "description": "A private two-farmhouse retreat on a working ranch in Gilgil, Kenya. Book a whole farmhouse for your family, ride horses, explore by ATV, and unwind in the Rift Valley.",
+  "url": "https://paxranch.com/",
+  "image": "https://paxranch.com/images/hero-home.jpg",
+  "email": "stay@paxranchhouse.co.ke",
+  "telephone": "+254722000000",
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Gilgil",
+    "addressRegion": "Nakuru County",
+    "addressCountry": "KE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -0.5006,
+    "longitude": 36.3206
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Horseback riding", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "ATV trails", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Private chef", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Working farm access", "value": true }
+  ],
+  "numberOfRooms": 9,
+  "sameAs": [
+    "https://instagram.com",
+    "https://facebook.com"
+  ]
+}
+</script>
 <style>
   :root{
     --cream:#f4efe6;
@@ -15,6 +67,7 @@
     --clay:#b08968;
     --ink:#2b2620;
     --charcoal:#3a342c;
+    --forest:#33402f;
     --muted:#7a716a;
     --gold:#a6854c;
   }
@@ -39,18 +92,26 @@
   /* NAV */
   nav.site{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:22px 48px;
+    padding:18px 48px;
     display:flex;justify-content:space-between;align-items:center;
-    transition:background .5s,color .5s,padding .4s;
+    transition:background .5s,color .5s,box-shadow .4s;
     color:#fff;
   }
-  nav.site.scrolled{background:var(--cream);color:var(--ink);padding:14px 48px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
-  nav.site .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.25em;text-transform:uppercase}
+  nav.site.scrolled{background:var(--cream);color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+  nav.site .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.25em;text-transform:uppercase;white-space:nowrap}
   nav.site ul{display:flex;gap:38px;list-style:none;font-size:.78rem;text-transform:uppercase;letter-spacing:.22em}
-  nav.site .cta{border:1px solid currentColor;padding:8px 22px;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase}
+  nav.site .cta{background:var(--clay);color:var(--cream);border:1px solid var(--clay);padding:10px 26px;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;transition:background .3s,color .3s;white-space:nowrap}
+  nav.site .cta:hover{background:transparent;color:var(--clay);opacity:1}
+  @media(max-width:1100px){
+    nav.site{padding:18px 28px;gap:20px}
+    nav.site .brand{font-size:1.15rem;letter-spacing:.15em}
+    nav.site ul{gap:22px;letter-spacing:.14em}
+    nav.site .cta{padding:9px 18px;letter-spacing:.15em}
+  }
   @media(max-width:860px){
-    nav.site{padding:16px 22px}
+    nav.site{padding:14px 22px}
     nav.site ul{display:none}
+    nav.site .brand{font-size:1rem;letter-spacing:.15em}
   }
 
   /* HERO */
@@ -62,13 +123,13 @@
   .hero .bg{
     position:absolute;inset:0;
     background:
-      linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.55) 100%),
+      linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 28%,rgba(0,0,0,.22) 58%,rgba(0,0,0,.62) 100%),
       url('images/hero-home.jpg') center/cover no-repeat;
     transform:scale(1.05);animation:slowZoom 14s ease-out forwards;
   }
   @keyframes slowZoom{to{transform:scale(1)}}
   .hero .inner{position:relative;padding-bottom:10vh;max-width:900px}
-  .hero .eyebrow{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;margin-bottom:24px;opacity:.9}
+  .hero .eyebrow{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;margin-bottom:24px;opacity:.95;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
   .hero h1{font-weight:300;margin-bottom:20px}
   .hero h1 em{font-style:italic;font-weight:300}
   .hero p{font-size:1rem;max-width:520px;margin:0 auto 38px;opacity:.9}
@@ -94,7 +155,7 @@
   .split .img:hover img{transform:scale(1.04)}
   .split .copy h2{margin-bottom:22px}
   .split .copy p{margin-bottom:18px;color:var(--charcoal)}
-  @media(max-width:860px){.split{grid-template-columns:1fr;gap:40px}.split.reverse .img{order:0}}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:40px}.split.reverse .img{order:0}section{padding:80px 22px}.hero .inner{padding-left:22px;padding-right:22px}}
 
   /* EXPERIENCES */
   .experiences{background:var(--bone)}
@@ -126,18 +187,24 @@
     transition:background .3s,color .3s;
   }
   .btn:hover{background:var(--ink);color:var(--cream);opacity:1}
-  .btn.light{border-color:#fff;color:#fff}
-  .btn.light:hover{background:#fff;color:var(--ink)}
+  .btn.light{border-color:#fff;background:#fff;color:var(--ink)}
+  .btn.light:hover{background:transparent;color:#fff}
   .btn.solid{background:var(--ink);color:var(--cream)}
   .btn.solid:hover{background:transparent;color:var(--ink)}
 
   /* FOOTER */
-  footer{background:var(--charcoal);color:var(--bone);padding:90px 48px 40px}
+  footer{position:relative;background-color:var(--forest);color:var(--bone);padding:90px 48px 40px;overflow:hidden}
+  footer::before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;background:url("images/gilgil-contours.png") no-repeat bottom center;background-size:cover;opacity:.07;pointer-events:none}
+  footer .grid,footer .fine{position:relative;z-index:1}
   footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;max-width:1200px;margin:0 auto}
   footer h4{font-size:1.4rem;margin-bottom:18px;letter-spacing:.05em}
   footer .col p,footer .col a{font-size:.85rem;opacity:.75;display:block;margin-bottom:10px}
+  footer .social{display:flex;gap:18px;margin-top:24px}
+  footer .social a{display:inline-flex;opacity:.6;margin:0;transition:opacity .3s,color .3s}
+  footer .social a:hover{opacity:1;color:var(--clay)}
+  footer .social svg{width:20px;height:20px;display:block}
   footer .fine{text-align:center;margin-top:70px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;opacity:.6}
-  @media(max-width:860px){footer .grid{grid-template-columns:1fr}}
+  @media(max-width:860px){footer{padding:70px 28px 36px}footer .grid{grid-template-columns:1fr 1fr;gap:36px 24px}footer .col:first-child{grid-column:1 / -1}}
 
   /* FADE-IN */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.2s ease}
@@ -147,12 +214,13 @@
 <body>
 
 <nav class="site" id="nav">
-  <div class="brand">Pax Ranch House</div>
+  <a href="index.html" class="brand">Pax Ranch House</a>
   <ul>
     <li><a href="the-estate.html">The Estate</a></li>
     <li><a href="farmhouses.html">Farmhouses</a></li>
     <li><a href="experiences.html">Experiences</a></li>
     <li><a href="dining.html">Dining</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
     <li><a href="journal.html">Journal</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -261,6 +329,11 @@
     <div class="col">
       <h4>Pax Ranch House</h4>
       <p>A private farmhouse retreat on a working ranch in Gilgil, Kenya. Two houses. One estate. Yours alone.</p>
+      <div class="social">
+        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 8.5h2.5M14 8.5V6.8c0-1 .8-1.8 1.8-1.8h1.7M14 8.5V19M14 8.5h-2.5M10 12h4"/></svg></a>
+        <a href="https://wa.me/254722000000" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19.2L4 20z"/><path d="M9 9c0 4 3 6 6 6 .8 0 1.2-.6 1-1.2l-1.5-1-1.3.9c-1-.5-2.3-1.7-2.6-2.8l.8-1L10 8.5C9.4 8.3 9 8.5 9 9z" fill="currentColor" stroke="none"/></svg></a>
+      </div>
     </div>
     <div class="col">
       <h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Visit</h4>
@@ -271,6 +344,7 @@
     </div>
     <div class="col">
       <h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Connect</h4>
+      <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
       <a href="booking.html">Reserve</a>
       <a href="journal.html">Journal</a>

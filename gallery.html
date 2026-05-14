@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Pax Ranch House</title>
+<meta name="description" content="A photo gallery of Pax Ranch House in Gilgil, Kenya — the farmhouses, stables, gardens, cattle, and the long Rift Valley light.">
+<link rel="canonical" href="https://paxranch.com/gallery.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#33402f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pax Ranch House">
+<meta property="og:title" content="Gallery — Pax Ranch House">
+<meta property="og:description" content="A photo gallery of Pax Ranch House in Gilgil, Kenya — the farmhouses, stables, gardens, cattle, and Rift Valley light.">
+<meta property="og:url" content="https://paxranch.com/gallery.html">
+<meta property="og:image" content="https://paxranch.com/images/gallery/gallery-01.jpg">
+<meta property="og:locale" content="en_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gallery — Pax Ranch House">
+<meta name="twitter:description" content="A photo gallery of Pax Ranch House in Gilgil, Kenya.">
+<meta name="twitter:image" content="https://paxranch.com/images/gallery/gallery-01.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .gallery-grid{column-count:3;column-gap:14px;max-width:1300px;margin:0 auto}
+  .gallery-grid figure{break-inside:avoid;margin:0 0 14px;overflow:hidden;cursor:pointer;background:var(--bone)}
+  .gallery-grid img{width:100%;display:block;transition:transform 1.4s ease,opacity .8s ease}
+  .gallery-grid figure:hover img{transform:scale(1.05)}
+  @media(max-width:900px){.gallery-grid{column-count:2;column-gap:10px}.gallery-grid figure{margin-bottom:10px}}
+  @media(max-width:560px){.gallery-grid{column-count:1}}
+
+  .lightbox{position:fixed;inset:0;background:rgba(20,18,14,.94);display:none;align-items:center;justify-content:center;z-index:200;padding:40px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lightbox .lb-close,.lightbox .lb-nav{position:absolute;color:var(--bone);background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:opacity .3s}
+  .lightbox .lb-close{top:28px;right:36px;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase}
+  .lightbox .lb-nav{top:50%;transform:translateY(-50%);font-size:2.4rem;font-weight:300;padding:20px}
+  .lightbox .lb-prev{left:18px}
+  .lightbox .lb-next{right:18px}
+  .lightbox .lb-close:hover,.lightbox .lb-nav:hover{opacity:.55}
+  .lightbox .lb-count{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--bone);font-size:.72rem;letter-spacing:.3em;opacity:.7}
+  @media(max-width:560px){.lightbox{padding:16px}.lightbox .lb-nav{font-size:1.8rem;padding:10px}}
+</style>
+</head><body>
+
+<nav class="site" id="nav">
+  <a href="index.html" class="brand">Pax Ranch House</a>
+  <ul>
+    <li><a href="the-estate.html">The Estate</a></li>
+    <li><a href="farmhouses.html">Farmhouses</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="dining.html">Dining</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="booking.html" class="cta">Reserve</a>
+</nav>
+
+<section class="page-hero" style="height:55vh;min-height:420px">
+  <div class="bg" style="background-image:url('images/hero-experiences.jpg')"></div>
+  <div class="inner">
+    <span class="eyebrow" style="color:rgba(255,255,255,.9)">Gallery</span>
+    <h1 style="color:#fff"><em>The place, in pictures.</em></h1>
+  </div>
+</section>
+
+<section>
+  <div class="narrow reveal" style="margin-bottom:60px">
+    <span class="eyebrow">A Closer Look</span>
+    <h2>From the gate to the ridgeline.</h2>
+    <div class="divider"></div>
+    <p class="lede">The farmhouses, the stables, the gardens, the cattle, and the long Rift Valley light — a fuller picture of life at Pax Ranch House.</p>
+  </div>
+  <div class="gallery-grid reveal" id="grid"></div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">Close ✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<footer>
+  <div class="grid">
+    <div class="col"><h4>Pax Ranch House</h4><p>A private farmhouse retreat on a working ranch in Gilgil, Kenya.</p><div class="social"><a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 8.5h2.5M14 8.5V6.8c0-1 .8-1.8 1.8-1.8h1.7M14 8.5V19M14 8.5h-2.5M10 12h4"/></svg></a><a href="https://wa.me/254722000000" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19.2L4 20z"/><path d="M9 9c0 4 3 6 6 6 .8 0 1.2-.6 1-1.2l-1.5-1-1.3.9c-1-.5-2.3-1.7-2.6-2.8l.8-1L10 8.5C9.4 8.3 9 8.5 9 9z" fill="currentColor" stroke="none"/></svg></a></div></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Visit</h4><a href="the-estate.html">The Estate</a><a href="farmhouses.html">Farmhouses</a><a href="experiences.html">Experiences</a><a href="dining.html">Dining</a></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Connect</h4><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="booking.html">Reserve</a><a href="journal.html">Journal</a></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Find Us</h4><p>Gilgil, Nakuru County<br>Kenya</p><p>stay@paxranchhouse.co.ke</p></div>
+  </div>
+  <div class="fine">© 2026 Pax Ranch House · All Rights Reserved</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const TOTAL=27;
+const grid=document.getElementById('grid');
+const imgs=[];
+for(let i=1;i<=TOTAL;i++){
+  const src='images/gallery/gallery-'+String(i).padStart(2,'0')+'.jpg';
+  imgs.push(src);
+  const fig=document.createElement('figure');
+  const im=document.createElement('img');
+  im.src=src;im.loading='lazy';im.alt='Pax Ranch House — photograph '+i;
+  fig.appendChild(im);
+  fig.addEventListener('click',()=>openLb(i-1));
+  grid.appendChild(fig);
+}
+
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCount=document.getElementById('lbCount');
+let cur=0;
+function openLb(i){cur=i;lbImg.src=imgs[cur];lbCount.textContent=(cur+1)+' / '+TOTAL;lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+function step(d){cur=(cur+d+TOTAL)%TOTAL;lbImg.src=imgs[cur];lbCount.textContent=(cur+1)+' / '+TOTAL;}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();step(-1);});
+document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();step(1);});
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
+});
+</script>
+</body></html>

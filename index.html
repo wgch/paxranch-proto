@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pax Ranch House — A Private Farmhouse Retreat in Gilgil, Kenya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4efe6;
+    --bone:#ebe4d6;
+    --sand:#d8cdb7;
+    --clay:#b08968;
+    --ink:#2b2620;
+    --charcoal:#3a342c;
+    --muted:#7a716a;
+    --gold:#a6854c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.7;
+    letter-spacing:.02em;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.01em;line-height:1.15}
+  h1{font-size:clamp(2.5rem,6vw,5rem)}
+  h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:400}
+  h3{font-size:clamp(1.4rem,2vw,1.9rem)}
+  a{color:inherit;text-decoration:none;transition:opacity .3s}
+  a:hover{opacity:.65}
+  img{max-width:100%;display:block}
+
+  /* NAV */
+  nav.site{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 48px;
+    display:flex;justify-content:space-between;align-items:center;
+    transition:background .5s,color .5s,padding .4s;
+    color:#fff;
+  }
+  nav.site.scrolled{background:var(--cream);color:var(--ink);padding:14px 48px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+  nav.site .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.25em;text-transform:uppercase}
+  nav.site ul{display:flex;gap:38px;list-style:none;font-size:.78rem;text-transform:uppercase;letter-spacing:.22em}
+  nav.site .cta{border:1px solid currentColor;padding:8px 22px;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase}
+  @media(max-width:860px){
+    nav.site{padding:16px 22px}
+    nav.site ul{display:none}
+  }
+
+  /* HERO */
+  .hero{
+    height:100vh;min-height:640px;
+    position:relative;display:flex;align-items:flex-end;justify-content:center;
+    color:#fff;text-align:center;overflow:hidden;
+  }
+  .hero .bg{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.55) 100%),
+      url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=2000&q=80') center/cover no-repeat;
+    transform:scale(1.05);animation:slowZoom 14s ease-out forwards;
+  }
+  @keyframes slowZoom{to{transform:scale(1)}}
+  .hero .inner{position:relative;padding-bottom:10vh;max-width:900px}
+  .hero .eyebrow{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;margin-bottom:24px;opacity:.9}
+  .hero h1{font-weight:300;margin-bottom:20px}
+  .hero h1 em{font-style:italic;font-weight:300}
+  .hero p{font-size:1rem;max-width:520px;margin:0 auto 38px;opacity:.9}
+  .scroll-hint{
+    position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+    font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;
+  }
+  .scroll-hint:after{content:"";display:block;width:1px;height:40px;background:#fff;margin:14px auto 0;animation:drop 2.2s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* SECTIONS */
+  section{padding:120px 48px}
+  .container{max-width:1200px;margin:0 auto}
+  .narrow{max-width:720px;margin:0 auto;text-align:center}
+  .eyebrow{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:block}
+  .lede{font-size:1.1rem;line-height:1.85;color:var(--charcoal);margin-top:28px}
+  .divider{width:40px;height:1px;background:var(--clay);margin:32px auto}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .split.reverse .img{order:2}
+  .split .img{aspect-ratio:4/5;overflow:hidden}
+  .split .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s}
+  .split .img:hover img{transform:scale(1.04)}
+  .split .copy h2{margin-bottom:22px}
+  .split .copy p{margin-bottom:18px;color:var(--charcoal)}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:40px}.split.reverse .img{order:0}}
+
+  /* EXPERIENCES */
+  .experiences{background:var(--bone)}
+  .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+  .exp-card{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer}
+  .exp-card .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s}
+  .exp-card:hover .bg{transform:scale(1.08)}
+  .exp-card .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 100%)}
+  .exp-card .label{position:absolute;bottom:0;left:0;right:0;padding:28px;color:#fff;z-index:2}
+  .exp-card .label .n{font-size:.7rem;letter-spacing:.35em;opacity:.8;display:block;margin-bottom:8px}
+  .exp-card h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem}
+  @media(max-width:860px){.exp-grid{grid-template-columns:1fr}}
+
+  /* QUOTE BAND */
+  .quote{
+    background:url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=2000&q=80') center/cover fixed no-repeat;
+    color:#fff;text-align:center;position:relative;padding:160px 48px;
+  }
+  .quote:before{content:"";position:absolute;inset:0;background:rgba(20,16,12,.55)}
+  .quote .inner{position:relative;max-width:800px;margin:0 auto}
+  .quote h2{font-style:italic;font-weight:300;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.4}
+  .quote cite{display:block;margin-top:32px;font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;font-style:normal;opacity:.85}
+
+  /* BUTTON */
+  .btn{
+    display:inline-block;padding:14px 36px;border:1px solid var(--ink);
+    font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+    background:transparent;color:var(--ink);cursor:pointer;
+    transition:background .3s,color .3s;
+  }
+  .btn:hover{background:var(--ink);color:var(--cream);opacity:1}
+  .btn.light{border-color:#fff;color:#fff}
+  .btn.light:hover{background:#fff;color:var(--ink)}
+  .btn.solid{background:var(--ink);color:var(--cream)}
+  .btn.solid:hover{background:transparent;color:var(--ink)}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:var(--bone);padding:90px 48px 40px}
+  footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;max-width:1200px;margin:0 auto}
+  footer h4{font-size:1.4rem;margin-bottom:18px;letter-spacing:.05em}
+  footer .col p,footer .col a{font-size:.85rem;opacity:.75;display:block;margin-bottom:10px}
+  footer .fine{text-align:center;margin-top:70px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;opacity:.6}
+  @media(max-width:860px){footer .grid{grid-template-columns:1fr}}
+
+  /* FADE-IN */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.2s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav class="site" id="nav">
+  <div class="brand">Pax Ranch House</div>
+  <ul>
+    <li><a href="the-estate.html">The Estate</a></li>
+    <li><a href="farmhouses.html">Farmhouses</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="dining.html">Dining</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="booking.html" class="cta">Reserve</a>
+</nav>
+
+<section class="hero">
+  <div class="bg"></div>
+  <div class="inner">
+    <span class="eyebrow">Gilgil · Kenya</span>
+    <h1>A private farmhouse<br><em>in the heart of the Rift Valley</em></h1>
+    <p>Two farmhouses. One working ranch. An unhurried escape where the only schedule is sunrise over the acacia, and hoofbeats across the plains.</p>
+    <a href="booking.html" class="btn light">Plan Your Stay</a>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<section>
+  <div class="narrow reveal">
+    <span class="eyebrow">Welcome</span>
+    <h2>An estate for those who seek stillness.</h2>
+    <div class="divider"></div>
+    <p class="lede">Nestled in the highlands of Gilgil, Pax Ranch House offers an intimate kind of luxury — two fully private farmhouses set across a working horse and cattle ranch, available exclusively to one family or party at a time. No lobby. No neighbours. Only the land, the horses, and the quiet.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="container">
+    <div class="split reveal">
+      <div class="img"><img src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=1400&q=80" alt="Farmhouse veranda"></div>
+      <div class="copy">
+        <span class="eyebrow">The Farmhouses</span>
+        <h2>Two houses. One estate. Entirely yours.</h2>
+        <p>Choose between The Main House — a five-bedroom colonial farmstead with wraparound veranda — or The Cottage, a four-bedroom retreat tucked beside the paddocks. Each is taken as a whole, ensuring your party is the only one in residence.</p>
+        <p>Open fireplaces, linen-dressed beds, and kitchens stocked from the estate garden. A housekeeper and chef are on hand; the pace is yours to set.</p>
+        <a href="farmhouses.html" class="btn" style="margin-top:14px">Discover the Houses</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:60px">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="img"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1400&q=80" alt="Horses"></div>
+      <div class="copy">
+        <span class="eyebrow">The Ranch</span>
+        <h2>A working farm, open to those who stay.</h2>
+        <p>Ride out at dawn through fever-tree woodland. Take an ATV across the ridgeline to watch the mist rise off Lake Elmenteita. Help bring the cattle in at dusk — or simply sit on the veranda and let the day pass.</p>
+        <p>Horses and ATVs are yours for the asking, with guides who know every track on the land.</p>
+        <a href="experiences.html" class="btn" style="margin-top:14px">Explore Experiences</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experiences">
+  <div class="container">
+    <div class="narrow reveal">
+      <span class="eyebrow">Experiences</span>
+      <h2>The days, as you wish them.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="exp-grid reveal">
+      <a href="experiences.html" class="exp-card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1534773728080-33d31da27ae5?w=1200&q=80')"></div>
+        <div class="shade"></div>
+        <div class="label"><span class="n">01</span><h3>Horseback Riding</h3></div>
+      </a>
+      <a href="experiences.html" class="exp-card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1533873984035-25970ab07461?w=1200&q=80')"></div>
+        <div class="shade"></div>
+        <div class="label"><span class="n">02</span><h3>ATV Trails</h3></div>
+      </a>
+      <a href="experiences.html" class="exp-card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80')"></div>
+        <div class="shade"></div>
+        <div class="label"><span class="n">03</span><h3>Farm Life</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="inner reveal">
+    <h2>"Some places don't announce themselves.<br>They simply let you arrive, and stay."</h2>
+    <cite>— Guest Journal, 2025</cite>
+  </div>
+</section>
+
+<section>
+  <div class="narrow reveal">
+    <span class="eyebrow">Reserve</span>
+    <h2>Begin your stay.</h2>
+    <div class="divider"></div>
+    <p class="lede">Enquire directly with our team, or check availability for your preferred dates. We host one party at a time — advance booking is recommended.</p>
+    <div style="margin-top:38px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="booking.html" class="btn solid">Check Availability</a>
+      <a href="contact.html" class="btn">Make an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="grid">
+    <div class="col">
+      <h4>Pax Ranch House</h4>
+      <p>A private farmhouse retreat on a working ranch in Gilgil, Kenya. Two houses. One estate. Yours alone.</p>
+    </div>
+    <div class="col">
+      <h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Visit</h4>
+      <a href="the-estate.html">The Estate</a>
+      <a href="farmhouses.html">Farmhouses</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="dining.html">Dining</a>
+    </div>
+    <div class="col">
+      <h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Connect</h4>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html">Reserve</a>
+      <a href="journal.html">Journal</a>
+    </div>
+    <div class="col">
+      <h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Find Us</h4>
+      <p>Gilgil, Nakuru County<br>Kenya</p>
+      <p>stay@paxranchhouse.co.ke</p>
+    </div>
+  </div>
+  <div class="fine">© 2026 Pax Ranch House · All Rights Reserved</div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

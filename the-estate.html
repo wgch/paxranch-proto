@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Estate — Pax Ranch House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head><body>
+
+<nav class="site" id="nav">
+  <div class="brand">Pax Ranch House</div>
+  <ul>
+    <li><a href="the-estate.html">The Estate</a></li>
+    <li><a href="farmhouses.html">Farmhouses</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="dining.html">Dining</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="booking.html" class="cta">Reserve</a>
+</nav>
+
+<section class="page-hero">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80')"></div>
+  <div class="inner">
+    <span class="eyebrow" style="color:rgba(255,255,255,.9)">The Estate</span>
+    <h1 style="color:#fff"><em>A family farm,</em><br>one hundred years in the making.</h1>
+  </div>
+</section>
+
+<section>
+  <div class="narrow reveal">
+    <span class="eyebrow">Our Story</span>
+    <h2>Of the land, and those who work it.</h2>
+    <div class="divider"></div>
+    <p class="lede">Pax Ranch House sits on 2,000 acres of highland savannah outside Gilgil — a working cattle and horse ranch tended by three generations of the same family. The two farmhouses were built in the 1930s and have welcomed guests since 2018, always one party at a time, always with the rhythms of the farm gently present.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="container">
+    <div class="split reveal">
+      <div class="img"><img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=1400&q=80" alt="Savannah"></div>
+      <div class="copy">
+        <span class="eyebrow">The Land</span>
+        <h2>Highland light, open sky.</h2>
+        <p>At 6,500 feet, the air is cool, the evenings are fireside. Acacia woodland, seasonal streams, and open grasslands roll toward the escarpment of the Great Rift Valley.</p>
+        <p>From the north boundary you can walk to a ridge that looks across Lake Elmenteita — pink with flamingos in the wet season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:60px">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="img"><img src="https://images.unsplash.com/photo-1485637701894-09ad422f6de6?w=1400&q=80" alt="Horses on ranch"></div>
+      <div class="copy">
+        <span class="eyebrow">The Farm</span>
+        <h2>Horses, cattle, and honest work.</h2>
+        <p>Forty horses — a mix of Boerperds, thoroughbreds, and gentle ranch-bred stock — share the paddocks with a herd of Boran cattle. The farm is self-sufficient in vegetables, herbs, eggs, and dairy.</p>
+        <p>Guests are welcome to join morning chores, the weekly cattle move, or simply watch from the veranda with a coffee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bone)">
+  <div class="narrow reveal">
+    <span class="eyebrow">Location</span>
+    <h2>Gilgil, Kenya.</h2>
+    <div class="divider"></div>
+    <p class="lede">Three hours by road from Nairobi, or a 35-minute charter flight to the nearest airstrip. We arrange transfers on request. The nearest towns are Gilgil (20 minutes) and Naivasha (45 minutes), with the Aberdare National Park and Lake Nakuru both within easy reach for day excursions.</p>
+    <div style="margin-top:50px"><a href="booking.html" class="btn solid">Plan Your Visit</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="grid">
+    <div class="col"><h4>Pax Ranch House</h4><p>A private farmhouse retreat on a working ranch in Gilgil, Kenya.</p></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Visit</h4><a href="the-estate.html">The Estate</a><a href="farmhouses.html">Farmhouses</a><a href="experiences.html">Experiences</a><a href="dining.html">Dining</a></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Connect</h4><a href="contact.html">Contact</a><a href="booking.html">Reserve</a><a href="journal.html">Journal</a></div>
+    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Find Us</h4><p>Gilgil, Nakuru County<br>Kenya</p><p>stay@paxranchhouse.co.ke</p></div>
+  </div>
+  <div class="fine">© 2026 Pax Ranch House · All Rights Reserved</div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body></html>

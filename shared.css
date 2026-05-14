@@ -31,8 +31,8 @@ nav.site .menu-toggle span:nth-child(3){top:20px}
 nav.site.open .menu-toggle span:nth-child(1){transform:translateY(10px) rotate(45deg)}
 nav.site.open .menu-toggle span:nth-child(2){opacity:0}
 nav.site.open .menu-toggle span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
-@media(max-width:1100px){nav.site{padding:18px 28px;gap:20px}nav.site .brand{font-size:1.15rem;letter-spacing:.15em}nav.site ul{gap:22px;letter-spacing:.14em}nav.site .cta{padding:9px 18px;letter-spacing:.15em}}
-@media(max-width:860px){
+@media(max-width:1340px){nav.site{padding:18px 28px;gap:18px}nav.site .brand{font-size:1.12rem;letter-spacing:.13em}nav.site ul{gap:18px;letter-spacing:.12em;font-size:.72rem}nav.site .cta{padding:9px 16px;letter-spacing:.13em}}
+@media(max-width:1024px){
   nav.site{padding:14px 22px}
   nav.site .brand{font-size:1rem;letter-spacing:.15em}
   nav.site .menu-toggle{display:block;order:3}

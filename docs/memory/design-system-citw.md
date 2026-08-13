@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: ca52226e-4a4f-43c3-8159-744a6ebb4d0c
-  modified: 2026-08-13T17:49:13.892Z
+  modified: 2026-08-13T18:25:05.630Z
 ---
 
 As of 2026-08-13 the site's design language is adapted from **collectioninthewild.com** (user-chosen reference, replacing the earlier delaire.co.za direction). `project-brief.md` was rewritten the same day to match — brief, `shared.css`, and this note should stay in agreement; `shared.css` wins on conflict.
@@ -14,4 +14,5 @@ As of 2026-08-13 the site's design language is adapted from **collectioninthewil
 - **Fonts**: headings `'Iowan Old Style'` (ships with macOS/iOS — exact match to the reference's commercial IowanOldStyleBT) with **Lora** (Google) as the cross-platform fallback; body/UI **Outfit** (Google, exact match to reference). Buying Bitstream Iowan Old Style (~$40/style, MyFonts) would make headings pixel-identical on Windows/Android — pure font-stack change, no other code edits.
 - **Ornamental button frame** (double keyline + side brackets): reference uses a PNG `border-image`; ours is an **original SVG recreation** (never copy their asset) inlined as data-URIs in `shared.css` custom properties `--frame-camel/--frame-olive/--frame-white`, applied via `border-image: var(--frame-*) 45 25 37 / 24px 14px 20px`. To recolor, duplicate the data-URI with a new stroke.
 - **Header**: solid ivory fixed bar, split nav (4 links | 150px gap | 3 links + Reserve), logo badge absolutely positioned overlapping the hero. The badge must stay `position:absolute` — putting it in grid flow inflates the row and pushes links below the bar (bug fixed 2026-08-13).
+- **Second wave (2026-08-13, same day)** recreated more CITW patterns: inset card-style home hero (ivory margin, headline bottom-left), `.feature-split` (statement w/ `.rule-label` + white `.photo-card` w/ centred caption), `.carousel` scroll-snap card row with circular arrows, `.testimonial` ornate framed quote (flourish SVG ornaments as multi-layer backgrounds on `.t-orn` — element is oversized `inset:-26px` so corners render outside the keylines), and the full CITW footer (link cols + Press placeholders + newsletter + contact line + separate ivory `.social-strip`). The old photo quote band was REMOVED (`quote-band.jpg` now unused). Shared JS was consolidated into `site.js` (nav/reveals/newsletter/carousels); only booking's toggle and gallery's lightbox remain inline.
 - `index.html` no longer carries inline CSS — everything is consolidated in `shared.css`.

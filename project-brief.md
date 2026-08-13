@@ -25,6 +25,7 @@ journal.html        Journal (editorial grid)
 booking.html        Reserve (tabbed: availability calendar + enquiry form)
 contact.html        Contact (details + form)
 shared.css          The design system + all shared styles (all pages link it)
+site.js             Shared behaviour: nav, scroll state, reveals, footer newsletter, carousels
 enquiry.js          Form submission (posts to enquiry.php, inline status states)
 enquiry.php         Resend-backed mail endpoint (API key in .env — never commit it)
 images/             Real Pax Ranch photos (~64MB incl. gallery/, gallery/thumbs/,
@@ -37,7 +38,7 @@ All pages link `shared.css`; `index.html` no longer carries inline styles. Page-
 
 All `<img src>` and `background-image` references point to local files in `images/` — real photos of the actual property, resized, auto-oriented, metadata-stripped. **Copy the entire `images/` folder into `public/images/` and the existing relative paths (`images/hero-home.jpg` etc.) will mostly work as-is** — just verify the leading path resolves from Nuxt's `public/` root.
 
-Filenames are semantic and map directly to the component specs below: `hero-{page}.jpg`, `home-*.jpg`, `estate-*.jpg`, `house-main-*.jpg`, `house-cottage-*.jpg`, `experience-*.jpg`, `exp-*.jpg` (home-page grid), `dining-*.jpg`, `journal-*.jpg`, `quote-band.jpg`, `gallery/gallery-NN.jpg` (+ `gallery/thumbs/`, `gallery/full/` variants), `logo/pax-logo-transparent-500.png` (header badge, footer watermark).
+Filenames are semantic and map directly to the component specs below: `hero-{page}.jpg`, `home-*.jpg`, `estate-*.jpg`, `house-main-*.jpg`, `house-cottage-*.jpg`, `experience-*.jpg`, `exp-*.jpg` (home-page grid), `dining-*.jpg`, `journal-*.jpg`, `gallery/gallery-NN.jpg` (+ `gallery/thumbs/`, `gallery/full/` variants), `logo/pax-logo-transparent-500.png` (header badge, footer watermark). `quote-band.jpg` is currently unused (the photo quote band was replaced by the framed testimonial).
 
 **Known photography gaps** — the supplied photo set had no horse, guest-room interior, or food/dining images. The current site uses the best available substitutes in those spots (stables signage for horseback riding, a red barn and a tree-shadow door for dining, building exteriors for the farmhouses). These are intentional placeholders pending a proper shoot — leave a `<!-- TODO: replace with commissioned photo -->` comment at each of these locations rather than swapping in stock. Affected: the horseback experience block, both farmhouse interior galleries, and the dining page section images.
 
@@ -82,7 +83,10 @@ components/
   AppButton.vue           ← ornamental keyline frame; variants: default (camel), light (white), solid (olive)
   FormField.vue           ← underline-style label + input/textarea/select
   SectionHeader.vue       ← eyebrow + h2 + divider (the repeating intro pattern)
-  QuoteBand.vue           ← parallax quote section (home page)
+  FeatureSplit.vue        ← statement text (rule-label + camel serif h2) beside a PhotoCard, `flip` prop
+  PhotoCard.vue           ← white-matted image card with centred kicker/title/tags caption + button
+  CardCarousel.vue        ← scroll-snap card row with circular prev/next arrows (home experiences)
+  TestimonialFrame.vue    ← ornate double-keyline quote frame on camel (SVG flourish ornaments)
   GalleryGrid.vue         ← lazy-loaded thumbs masonry + lightbox (gallery.vue)
   BookingCalendar.vue     ← 2-month view with booked/selected states
   EnquiryForm.vue         ← the long form used on booking + contact
@@ -157,7 +161,7 @@ This artwork is **original** (the reference site uses a licensed PNG; ours is a 
 ### PageHero.vue
 Props: `image` (URL), `eyebrow` (string), `title` (slot, allows `<em>` for italics). Renders a 66vh min-480px section **below the header bar** (not behind it) with a background image, gradient overlay `linear-gradient(180deg, rgba(20,16,10,.18) 0%, rgba(20,16,10,.08) 45%, rgba(20,16,10,.5) 100%)`, white centered content aligned to bottom, slow zoom animation. The header's logo badge overlaps the hero's top edge — no hero-side markup needed.
 
-The home page uses a taller variant — `calc(100vh - 76px)`, min 600px, content vertically centered, with a stronger top gradient. Expose a `variant: "home" | "page"` prop.
+The home page uses an **inset card variant**: a 14px ivory margin frames the image (`padding:14px 14px 0` on the section), height `calc(100vh - 76px - 14px)` min 560px, and the eyebrow/headline/button sit **bottom-left** (left-aligned) with the scroll hint bottom-right. Expose a `variant: "home" | "page"` prop.
 
 ### SplitBlock.vue
 Props: `image` (URL), `alt`, `reverse` (boolean), plus `eyebrow`, `heading`, and default slot for body copy. Grid `1fr 1fr` with 80px gap, image aspect-ratio 4:5 with slow scale-on-hover, collapses to single column under 860px.
@@ -177,11 +181,16 @@ Seed with plausible booked dates so the prototype still feels real. A "Continue 
 Used on `booking.vue` (enquiry tab) and `contact.vue`. Reactive form object; labels camel uppercase, camel underline inputs (olive on focus). The prototype already posts to `enquiry.php` via `enquiry.js` (Resend-backed, honeypot field, inline ok/err status states) — port that behaviour to a Nuxt server route at `server/api/enquiry.post.ts` with env var placeholders (`RESEND_API_KEY` lives in `.env`, never committed), and keep the client-side states.
 
 ### AppFooter.vue
-Background `var(--camel-2)`, white text. A giant watermark of the Pax shield (`logo/pax-logo-transparent-500.png`, ~520px, opacity .09) sits centered behind the content. 4-column grid: brand blurb + social icons / Visit / Connect / Find Us. Column headings are serif white ~1.25rem; links are Outfit uppercase .74rem. Fine-print bar bottom, hairline top border.
+Background `var(--camel-2)`, white text. A giant watermark of the Pax shield (`logo/pax-logo-transparent-500.png`, ~560px, opacity .10) sits left-of-centre behind the content. Grid `1.15fr .7fr .95fr 1.5fr`:
+1. **Visit** links + **Press** placeholder mentions (`<!-- TODO: real press coverage -->`) + a light-variant framed "Make an Enquiry" button.
+2. **Journal** / **Gallery** as standalone serif link headings.
+3. **Plan** links (Reserve, Rates, Contact & Directions, Getting Here → `contact#getting-here`).
+4. **Newsletter** behind a vertical hairline: serif invitation heading, Name+Surname underline inputs side by side, Email input, framed white "Sign Up" button, inline thank-you status (prototype-only — no backend; port as a stub server route later).
+Below the grid: a centred contact line (`tel | WhatsApp | mailto`, weight 500) and a fine-print line with a Legal Information link (TODO: real legal page). After the footer, a separate **ivory social strip**: circular camel-filled icon badges (Instagram, TikTok, WhatsApp). Column headings serif white ~1.35rem; links Outfit uppercase .72rem. Newsletter column drops below a hairline at ≤1100px; single column at ≤860px.
 
 ## Page-by-page notes
 
-**index.vue** — Home. Full-height hero, then 4 sections: welcome narrow, farmhouses split, ranch split (reverse), experiences grid (3-up), quote band, final dual-CTA block. Wire the two CTAs to `/booking` and `/contact`.
+**index.vue** — Home. Inset-card hero, then: welcome narrow, farmhouses FeatureSplit (PhotoCard left, statement right), ranch FeatureSplit (flipped), experiences CardCarousel (5 cards + arrows + framed CTA), TestimonialFrame ("Some places don't announce themselves…"), final dual-CTA block. Wire the two CTAs to `/booking` and `/contact`.
 
 **the-estate.vue** — Page hero, narrow intro, two splits (The Land, The Farm), an ivory→ivory-2 location section, CTA to booking.
 
@@ -204,10 +213,12 @@ Background `var(--camel-2)`, white text. A giant watermark of the Pax shield (`l
 - **Scroll reveal**: every `.reveal` element fades in + translates up once when scrolled into view. Implement once as `useScrollReveal()` composable or as a `v-reveal` directive registered globally. One observer per page, threshold 0.15, `rootMargin: '0px'`.
 - **Nav scroll state**: `.scrolled` past 60px adds the bar shadow. Use `useScrollNav()`.
 - **Hero slow zoom**: plays once on mount via CSS animation — no JS needed.
-- **Parallax quote band**: uses `background-attachment: fixed` — keep as CSS; it already falls back to `scroll` under 1024px (`fixed` is unreliable on iOS).
+- **Card carousels**: scroll-snap track; circular arrows scroll by one card width (`site.js` in the prototype). Arrows hidden ≤860px (touch swipes instead).
+- **Footer newsletter**: prevent-default submit with an inline thank-you status; structure so a `$fetch('/api/newsletter', ...)` swap is one line.
 - **Reduced motion**: `prefers-reduced-motion: reduce` disables reveals and hero zoom — preserve.
 - **Mobile menu**: hamburger toggles `.open` on the nav (max-height transition), `aria-expanded` kept in sync.
 - **Gallery lightbox**: Escape/arrow keys, click-outside to close, body scroll lock.
+- All shared behaviour lives in `site.js` (per-page inline scripts remain only for the booking toggle and the gallery grid/lightbox).
 
 ## Acceptance criteria
 

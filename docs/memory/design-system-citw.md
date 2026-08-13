@@ -5,10 +5,10 @@ metadata:
   node_type: memory
   type: project
   originSessionId: ca52226e-4a4f-43c3-8159-744a6ebb4d0c
-  modified: 2026-08-13T17:25:24.982Z
+  modified: 2026-08-13T17:49:13.892Z
 ---
 
-As of 2026-08-13 the site's design language is adapted from **collectioninthewild.com** (user-chosen reference, replacing the earlier delaire.co.za direction in project-brief.md — the brief's design tokens section is now stale).
+As of 2026-08-13 the site's design language is adapted from **collectioninthewild.com** (user-chosen reference, replacing the earlier delaire.co.za direction). `project-brief.md` was rewritten the same day to match — brief, `shared.css`, and this note should stay in agreement; `shared.css` wins on conflict.
 
 - **Tokens** (all in `shared.css` `:root`): ivory `#f8f4f0` bg, camel `#b7916f`, light-camel `#cca77f` (footer bg), sage `#5f6859` (headings), olive `#3f5431`, terracotta `#92695d`, gray `#4f5052` (body). Legacy var names (`--bone`, `--forest`, `--clay`, `--gold`, `--charcoal`, `--muted`) are kept as aliases pointing at the new values because inline styles across all 9 pages reference them — do not delete the aliases.
 - **Fonts**: headings `'Iowan Old Style'` (ships with macOS/iOS — exact match to the reference's commercial IowanOldStyleBT) with **Lora** (Google) as the cross-platform fallback; body/UI **Outfit** (Google, exact match to reference). Buying Bitstream Iowan Old Style (~$40/style, MyFonts) would make headings pixel-identical on Windows/Android — pure font-stack change, no other code edits.

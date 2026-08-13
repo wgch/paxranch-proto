@@ -24,12 +24,15 @@
 </head><body>
 
 <nav class="site" id="nav">
-  <ul class="left">
-    <li><a href="the-estate.html">The Estate</a></li>
-    <li><a href="farmhouses.html">Farmhouses</a></li>
-    <li><a href="experiences.html">Experiences</a></li>
-    <li><a href="dining.html">Dining</a></li>
-  </ul>
+  <div class="left-group">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
+    <ul class="left">
+      <li><a href="the-estate.html">The Estate</a></li>
+      <li><a href="farmhouses.html">Farmhouses</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="dining.html">Dining</a></li>
+    </ul>
+  </div>
   <a href="index.html" class="brand" aria-label="Pax Ranch House — home"><img src="images/logo/pax-logo-transparent-500.png" alt="Pax Ranch House"></a>
   <div class="right-group">
     <ul>
@@ -39,17 +42,37 @@
     </ul>
     <a href="booking.html" class="cta">Reserve</a>
   </div>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <ul class="mobile-menu">
-    <li><a href="the-estate.html">The Estate</a></li>
-    <li><a href="farmhouses.html">Farmhouses</a></li>
-    <li><a href="experiences.html">Experiences</a></li>
-    <li><a href="dining.html">Dining</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="journal.html">Journal</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
 </nav>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="mo-inner">
+    <button class="mo-close" id="menuClose"><span class="x" aria-hidden="true"></span> Close Menu</button>
+    <div class="mo-cols">
+      <div class="mo-left">
+        <ul class="mo-primary">
+          <li><a href="the-estate.html">The Estate</a></li>
+          <li><button class="mo-sub-toggle" data-sub="farmSub" aria-expanded="false">Farmhouses <span class="chev">›</span></button></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="dining.html">Dining</a></li>
+        </ul>
+        <ul class="mo-secondary">
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="booking.html">Rates &amp; Availability</a></li>
+          <li><a href="contact.html">Contact &amp; Directions</a></li>
+        </ul>
+        <a href="enquiry.html" class="btn mo-cta">Make an Enquiry</a>
+      </div>
+      <div class="mo-divider" aria-hidden="true"></div>
+      <div class="mo-right">
+        <ul class="mo-sub" id="farmSub" hidden>
+          <li><a href="farmhouses.html#main-house">The Main House</a></li>
+          <li><a href="farmhouses.html#cottage">The Cottage</a></li>
+          <li><a href="farmhouses.html#exclusive">Exclusive Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section class="page-hero" style="height:50vh;min-height:380px">
   <div class="bg" style="background-image:url('images/hero-contact.jpg')"></div>
@@ -124,7 +147,7 @@
       <a href="journal.html">East Africa Traveller</a>
       <a href="journal.html">The Safari Journal</a>
       <a href="journal.html">Town &amp; Country Escapes</a>
-      <a href="contact.html" class="btn light footer-cta">Make an Enquiry</a>
+      <a href="enquiry.html" class="btn light footer-cta">Make an Enquiry</a>
     </div>
     <div class="col standalone">
       <h4><a href="journal.html">Journal</a></h4>

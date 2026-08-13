@@ -4,7 +4,7 @@
 <meta name="description" content="Notes from the ranch — seasons, recipes, rides, and life at Pax Ranch House in Gilgil, Kenya, written from the farmhouse veranda.">
 <link rel="canonical" href="https://paxranch.com/journal.html">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#33402f">
+<meta name="theme-color" content="#3f5431">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pax Ranch House">
 <meta property="og:title" content="Journal — Pax Ranch House">
@@ -19,7 +19,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
   .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:60px}
@@ -27,7 +27,7 @@
   .post .img{aspect-ratio:4/5;overflow:hidden;margin-bottom:24px}
   .post .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
   .post:hover .img img{transform:scale(1.05)}
-  .post .date{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .post .date{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--camel);margin-bottom:10px}
   .post h3{margin-bottom:12px}
   .post p{color:var(--charcoal);font-size:.95rem}
   @media(max-width:860px){.post-grid{grid-template-columns:1fr}}
@@ -35,8 +35,23 @@
 </head><body>
 
 <nav class="site" id="nav">
-  <a href="index.html" class="brand">Pax Ranch House</a>
-  <ul>
+  <ul class="left">
+    <li><a href="the-estate.html">The Estate</a></li>
+    <li><a href="farmhouses.html">Farmhouses</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="dining.html">Dining</a></li>
+  </ul>
+  <a href="index.html" class="brand" aria-label="Pax Ranch House — home"><img src="images/logo/pax-logo-transparent-500.png" alt="Pax Ranch House"></a>
+  <div class="right-group">
+    <ul>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="journal.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="booking.html" class="cta">Reserve</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="mobile-menu">
     <li><a href="the-estate.html">The Estate</a></li>
     <li><a href="farmhouses.html">Farmhouses</a></li>
     <li><a href="experiences.html">Experiences</a></li>
@@ -45,8 +60,6 @@
     <li><a href="journal.html">Journal</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="booking.html" class="cta">Reserve</a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="page-hero" style="height:55vh;min-height:420px">
@@ -105,10 +118,10 @@
 
 <footer>
   <div class="grid">
-    <div class="col"><img src="images/paxranch-logo.png" alt="Pax Ranch House" class="footer-logo"><p>A private farmhouse retreat on a working ranch in Gilgil, Kenya.</p><div class="social"><a href="https://instagram.com/paxranchhouse" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@paxranchhouse" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 4c.4 2.3 2 4 4.5 4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wa.me/254722000000" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19.2L4 20z"/><path d="M9 9c0 4 3 6 6 6 .8 0 1.2-.6 1-1.2l-1.5-1-1.3.9c-1-.5-2.3-1.7-2.6-2.8l.8-1L10 8.5C9.4 8.3 9 8.5 9 9z" fill="currentColor" stroke="none"/></svg></a></div></div>
-    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Visit</h4><a href="the-estate.html">The Estate</a><a href="farmhouses.html">Farmhouses</a><a href="experiences.html">Experiences</a><a href="dining.html">Dining</a></div>
-    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Connect</h4><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="booking.html">Reserve</a><a href="journal.html">Journal</a></div>
-    <div class="col"><h4 style="font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;font-family:'Jost',sans-serif">Find Us</h4><p>Gilgil, Nakuru County<br>Kenya</p><p>stays@paxranch.com</p><a href="https://maps.app.goo.gl/CUEdxyDzbcasgZTp7" target="_blank" rel="noopener">View on Google Maps</a></div>
+    <div class="col"><img src="images/logo/pax-logo-transparent-500.png" alt="Pax Ranch House" class="footer-logo"><p>A private farmhouse retreat on a working ranch in Gilgil, Kenya.</p><div class="social"><a href="https://instagram.com/paxranchhouse" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@paxranchhouse" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 4c.4 2.3 2 4 4.5 4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="https://wa.me/254722000000" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4A8 8 0 1 1 9 19.2L4 20z"/><path d="M9 9c0 4 3 6 6 6 .8 0 1.2-.6 1-1.2l-1.5-1-1.3.9c-1-.5-2.3-1.7-2.6-2.8l.8-1L10 8.5C9.4 8.3 9 8.5 9 9z" fill="currentColor" stroke="none"/></svg></a></div></div>
+    <div class="col"><h4>Visit</h4><a href="the-estate.html">The Estate</a><a href="farmhouses.html">Farmhouses</a><a href="experiences.html">Experiences</a><a href="dining.html">Dining</a></div>
+    <div class="col"><h4>Connect</h4><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="booking.html">Reserve</a><a href="journal.html">Journal</a></div>
+    <div class="col"><h4>Find Us</h4><p>Gilgil, Nakuru County<br>Kenya</p><p>stays@paxranch.com</p><a href="https://maps.app.goo.gl/CUEdxyDzbcasgZTp7" target="_blank" rel="noopener">View on Google Maps</a></div>
   </div>
   <div class="fine">© 2026 Pax Ranch House · All Rights Reserved</div>
 </footer>

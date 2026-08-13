@@ -3,6 +3,12 @@
 .env.*
 !.env.example
 
+# Local QA artifacts (headless-browser screenshots for design review)
+.qa/
+
+# Source archive for the gallery shoot — originals live outside git
+images/gallery.zip
+
 # macOS
 .DS_Store
 

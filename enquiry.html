@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make an Enquiry — Pax Ranch House</title>
+<meta name="description" content="Enquire to stay at Pax Ranch House in Gilgil, Kenya — choose The Main House, The Cottage, or the whole estate, and we'll reply personally within 24 hours.">
+<link rel="canonical" href="https://paxranch.com/enquiry.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#3f5431">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pax Ranch House">
+<meta property="og:title" content="Make an Enquiry — Pax Ranch House">
+<meta property="og:description" content="Choose your farmhouse and tell us about your stay — we reply personally within 24 hours.">
+<meta property="og:url" content="https://paxranch.com/enquiry.html">
+<meta property="og:image" content="https://paxranch.com/images/hero-booking.jpg">
+<meta property="og:locale" content="en_KE">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head><body class="enq-body">
+
+<div class="enq-wrap">
+  <div class="enq-panel">
+    <div class="enq-top">
+      <a href="index.html" class="mini-logo" aria-label="Pax Ranch House — home"><img src="images/logo/pax-logo-transparent-500.png" alt="Pax Ranch House"></a>
+      <a href="index.html" class="back">Back to Site</a>
+    </div>
+
+    <h1 class="enq-title">Guest Enquiry</h1>
+    <div class="enq-rule"></div>
+
+    <!-- Step 1 — property -->
+    <div class="enq-step" id="step1">
+      <p class="enq-prompt">Select your property:</p>
+      <ul class="prop-list">
+        <li>
+          <label>
+            <input type="radio" name="prop" value="The Main House">
+            <span>
+              <span class="prop-name camel">The Main House</span>
+              <span class="prop-sub" style="display:block">Five Bedrooms | Sleeps 10</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="prop" value="The Cottage">
+            <span>
+              <span class="prop-name sage">The Cottage</span>
+              <span class="prop-sub" style="display:block">Four Bedrooms | Sleeps 8</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="prop" value="Whole Estate">
+            <span>
+              <span class="prop-name terra">The Whole Estate</span>
+              <span class="prop-sub" style="display:block">Exclusive Use | Up to 18 Guests</span>
+            </span>
+          </label>
+        </li>
+      </ul>
+      <div class="enq-actions">
+        <div class="form-status err" id="stepError" role="alert" style="display:none;font-size:.85rem">Please select a property to continue.</div>
+        <button class="btn" id="continueBtn" type="button">Continue</button>
+      </div>
+    </div>
+
+    <!-- Step 2 — details -->
+    <div class="enq-step" id="step2" hidden>
+      <p class="enq-prompt">Tell us about your stay at <em id="chosenProp" style="font-style:italic"></em>:</p>
+      <form class="form enquiry-form" id="enquiryPageForm" data-source="enquiry-page">
+        <input type="hidden" name="house" id="houseField">
+        <div><label>Full Name</label><input name="name" required></div>
+        <div><label>Email</label><input type="email" name="email" required></div>
+        <div><label>Phone</label><input type="tel" name="phone"></div>
+        <div><label>Number of Guests</label><input type="number" name="guests" min="1" max="18"></div>
+        <div><label>Arrival</label><input type="date" name="arrival"></div>
+        <div><label>Departure</label><input type="date" name="departure"></div>
+        <div class="full"><label>Tell Us a Little More</label><textarea name="message" placeholder="Occasion, preferences, dietary notes, experiences you'd like..."></textarea></div>
+        <div class="hp" aria-hidden="true"><label>Company</label><input name="company" tabindex="-1" autocomplete="off"></div>
+        <div class="full enq-actions" style="margin-top:20px">
+          <button type="button" class="back-step" id="backBtn">‹ Back</button>
+          <button class="btn solid" type="submit">Send Enquiry</button>
+        </div>
+        <div class="full form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="enq-photo" role="img" aria-label="Morning light at Pax Ranch House" style="background-image:url('images/hero-booking.jpg')"></div>
+</div>
+
+<script>
+(function(){
+  var step1=document.getElementById('step1'),step2=document.getElementById('step2');
+  var err=document.getElementById('stepError');
+  var chosen=document.getElementById('chosenProp'),houseField=document.getElementById('houseField');
+
+  // Preselect from ?house=main|cottage|estate (used by deep links around the site)
+  var map={main:'The Main House',cottage:'The Cottage',estate:'Whole Estate'};
+  var q=new URLSearchParams(location.search).get('house');
+  if(q&&map[q]){
+    var r=document.querySelector('.prop-list input[value="'+map[q]+'"]');
+    if(r)r.checked=true;
+  }
+
+  document.getElementById('continueBtn').addEventListener('click',function(){
+    var sel=document.querySelector('.prop-list input:checked');
+    if(!sel){err.style.display='block';return;}
+    err.style.display='none';
+    houseField.value=sel.value;
+    chosen.textContent=sel.value;
+    step1.hidden=true;step2.hidden=false;
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  document.getElementById('backBtn').addEventListener('click',function(){
+    step2.hidden=true;step1.hidden=false;
+  });
+})();
+</script>
+<script src="enquiry.js"></script>
+</body></html>

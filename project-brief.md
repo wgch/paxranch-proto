@@ -23,6 +23,7 @@ dining.html         Dining (chef, garden, sample day)
 gallery.html        Gallery (lazy-loaded masonry grid + lightbox)
 journal.html        Journal (editorial grid)
 booking.html        Reserve (tabbed: availability calendar + enquiry form)
+enquiry.html        Guest Enquiry (split-screen stepped flow: property picker → details form)
 contact.html        Contact (details + form)
 shared.css          The design system + all shared styles (all pages link it)
 site.js             Shared behaviour: nav, scroll state, reveals, footer newsletter, carousels
@@ -72,6 +73,7 @@ pages/
   gallery.vue
   journal.vue
   booking.vue
+  enquiry.vue
   contact.vue
 components/
   AppHeader.vue           ← solid ivory bar, split nav, overlapping logo badge
@@ -146,17 +148,21 @@ border: 0;
 border-image: var(--frame-camel) 45 25 37 / 24px 14px 20px;
 ```
 
-This artwork is **original** (the reference site uses a licensed PNG; ours is a redrawn SVG — do not substitute theirs). To add a colorway, duplicate the data-URI and change the `stroke`. `AppButton.vue` variants map: default → camel frame/camel text (hover: olive text), `light` → white frame/white text (dark backgrounds), `solid` → olive frame/olive text (hover: camel). The nav "Reserve" CTA uses the same frame at slightly smaller padding.
+**Hover/click states**: each colorway has a `-fill` twin (`--frame-camel-fill` etc.) where the interior region — inner keyline plus the side lobes — is painted solid; on `:hover`/`:focus-visible` the border-image swaps to the twin **with the `fill` slice keyword** (`border-image: var(--frame-camel-fill) 45 25 37 fill / 24px 14px 20px`) and the text inverts. Mapping: default → camel fill/white text; `light` → white fill/camel text; `solid` → olive fill/ivory text. `:active` adds a 1px translateY press. The gap between the keylines stays transparent so the page background shows through, matching the reference's plaque effect.
+
+This artwork is **original** (the reference site uses a licensed PNG; ours is a redrawn SVG — do not substitute theirs). To add a colorway, duplicate the data-URIs and change the `stroke`/`fill`. The nav "Reserve" CTA uses the same frame + states at slightly smaller padding.
 
 ## Component specs (the ones worth calling out)
 
-### AppHeader.vue
+### AppHeader.vue + MenuOverlay.vue
 **Solid ivory bar at all times** (no transparent-over-photo state), fixed, 76px tall (66px under 1024px); `body` carries matching top padding. Layout is a 3-column grid — `1fr 150px 1fr`:
-- Left: `<ul>` — The Estate / Farmhouses / Experiences / Dining. Items separated by 3px square camel dots (`li + li::before`). Outfit, uppercase, .8rem, tracking .045em, camel; hover olive.
+- Left: a **hamburger button (always visible, all viewports)** then the `<ul>` — The Estate / Farmhouses / Experiences / Dining. Items separated by 3px square camel dots (`li + li::before`). Outfit, uppercase, .8rem, tracking .045em, camel; hover olive.
 - Center: the **logo badge** — a 104px ivory circle (`position:absolute`, centered, `top:16px`) with soft shadow and the Pax shield (`images/logo/pax-logo-transparent-500.png`), deliberately overlapping down onto the hero image below. Keep it absolutely positioned: placing it in grid flow inflates the row and pushes the links below the bar.
 - Right: Gallery / Journal / Contact + the framed "Reserve" CTA.
 - `.scrolled` (past 60px, via `useScrollNav`) adds only a box-shadow. The old `forceScrolled` prop is obsolete — the bar is always solid.
-- Under 1024px: links collapse into a single `.mobile-menu` dropdown (hamburger right, Reserve stays visible beside it, badge shrinks to 76px).
+- Under 1024px the inline link lists hide; the hamburger + Reserve remain (badge shrinks to 76px).
+
+The hamburger opens **MenuOverlay.vue** — a full-screen ivory overlay (fade in, body scroll locked, Escape closes): "✕ Close Menu" top-left; large serif camel primary links (The Estate / Farmhouses / Experiences / Dining) where **Farmhouses is a chevron toggle** revealing serif sage sub-links (The Main House / The Cottage / Exclusive Use → farmhouses anchors `#main-house` `#cottage` `#exclusive`) in a right-hand panel past a thin vertical divider; below, an uppercase secondary list (Gallery / Journal / Rates & Availability / Contact & Directions) and a framed "Make an Enquiry" button → `/enquiry`.
 
 ### PageHero.vue
 Props: `image` (URL), `eyebrow` (string), `title` (slot, allows `<em>` for italics). Renders a 66vh min-480px section **below the header bar** (not behind it) with a background image, gradient overlay `linear-gradient(180deg, rgba(20,16,10,.18) 0%, rgba(20,16,10,.08) 45%, rgba(20,16,10,.5) 100%)`, white centered content aligned to bottom, slow zoom animation. The header's logo badge overlaps the hero's top edge — no hero-side markup needed.
@@ -204,7 +210,9 @@ Below the grid: a centred contact line (`tel | WhatsApp | mailto`, weight 500) a
 
 **journal.vue** — Shorter page hero (55vh), 6-post 3-column grid. Each post: image (4:5), camel date eyebrow, h3 title, 1-line excerpt. **Stretch**: wire to Nuxt Content — post bodies as markdown in `content/journal/`.
 
-**booking.vue** — **Olive** intro band (contour-line watermark) with a toggle between "Check Availability" and "Make an Enquiry" (active tab: ivory bg, olive text). Use `ref('avail' | 'enq')` + `v-if`. No special nav handling needed — the header is always solid.
+**booking.vue** — **Olive** intro band (contour-line watermark) with a toggle between "Check Availability" and "Make an Enquiry" (active tab: ivory bg, olive text). Use `ref('avail' | 'enq')` + `v-if`. No special nav handling needed — the header is always solid. "Continue to Details" routes to `/enquiry?house=main`.
+
+**enquiry.vue** — the CITW-style **Guest Enquiry** flow, no site header/footer (own mini header: small shield logo left, "Back to Site" right). Split screen: left panel with serif camel "Guest Enquiry" title + short rule; right 42% column is a full-height sticky photo (`hero-booking.jpg`; becomes a 200px top banner ≤900px). Step 1: "Select your property:" custom radio list — serif names in per-property colours (Main House camel, Cottage sage, Whole Estate terracotta) with uppercase sub-labels — framed Continue (validates a selection). Step 2: personalised prompt ("Tell us about your stay at <em>X</em>"), the standard enquiry form posting through the same submission path as booking/contact (`enquiry.php` → port to `server/api/enquiry.post.ts`), ‹ Back link, framed solid Send Enquiry. Supports `?house=main|cottage|estate` preselection — used by deep links across the site (footer CTA, exclusive-use band, booking summary).
 
 **contact.vue** — Short page hero, 2-column section (left: direct contact details — camel labels, serif sage values; right: EnquiryForm), then a "Getting Here" ivory-2 closing section. The 2-column grid collapses under 860px (class `contact-grid` — keep it a class, not inline styles, so the collapse works).
 
@@ -216,14 +224,14 @@ Below the grid: a centred contact line (`tel | WhatsApp | mailto`, weight 500) a
 - **Card carousels**: scroll-snap track; circular arrows scroll by one card width (`site.js` in the prototype). Arrows hidden ≤860px (touch swipes instead).
 - **Footer newsletter**: prevent-default submit with an inline thank-you status; structure so a `$fetch('/api/newsletter', ...)` swap is one line.
 - **Reduced motion**: `prefers-reduced-motion: reduce` disables reveals and hero zoom — preserve.
-- **Mobile menu**: hamburger toggles `.open` on the nav (max-height transition), `aria-expanded` kept in sync.
+- **Overlay menu**: the hamburger (all viewports) opens the full-screen menu — fade transition, body scroll lock, Escape/close button dismisses, Farmhouses chevron toggles the sub-panel, `aria-expanded` kept in sync.
 - **Gallery lightbox**: Escape/arrow keys, click-outside to close, body scroll lock.
 - All shared behaviour lives in `site.js` (per-page inline scripts remain only for the booking toggle and the gallery grid/lightbox).
 
 ## Acceptance criteria
 
 1. `npm install && npm run dev` boots cleanly with no console errors.
-2. All 9 pages render and are reachable via the nav.
+2. All 10 pages render and are reachable via the nav or overlay menu.
 3. Visual output matches the prototype pixel-for-pixel (same fonts, colors, spacing, hover states, scroll-reveal behavior). On macOS/iOS headings render in Iowan Old Style; elsewhere in Lora.
 4. The booking page toggle works; the calendar visually shows the selected range and blocks out pre-booked dates; the summary updates.
 5. Forms submit and display the inline success confirmation (server route may be a stub that returns `{ ok: true }`).

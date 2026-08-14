@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Pax Ranch House">
+  <title>Pax Ranch House</title>
+  <desc>Round badge: the Pax galloping horse encircled by the words PAX above and RANCH HOUSE below.</desc>
+
+  <defs>
+    <path id="arcTop" d="M 22 100 A 78 78 0 0 1 178 100" fill="none"/>
+    <path id="arcBottom" d="M 16 100 A 84 84 0 0 0 184 100" fill="none"/>
+  </defs>
+
+  <!-- Horse — galloping silhouette, centred. Built from overlapping same-fill parts
+       (body / neck / head / mane / legs / tail) so each is independently adjustable. -->
+  <g fill="#633D24" transform="translate(100 102) scale(0.40) translate(-129 -81)">
+    <!-- body -->
+    <ellipse cx="125" cy="82" rx="52" ry="27" transform="rotate(-4 125 82)"/>
+    <!-- neck (tapered, arched forward) -->
+    <path d="M 150 62 C 166 44 182 28 198 20 L 218 36 C 206 50 192 68 180 90 C 168 92 156 80 150 62 Z"/>
+    <!-- head + muzzle -->
+    <path d="M 194 16 C 205 10 218 13 227 22 L 241 34 C 245 38 243 45 236 44 L 220 42 C 210 40 202 32 196 26 Z"/>
+    <!-- ear -->
+    <path d="M 201 15 L 208 2 L 214 13 Z"/>
+    <!-- mane — continuous ribbon hugging the crest from withers to poll -->
+    <path d="M 144 62 C 154 46 168 28 186 14 C 193 9 200 13 201 19 C 190 26 177 39 167 53 C 161 61 155 68 151 73 C 146 71 143 67 144 62 Z"/>
+    <!-- front legs — extended forward (gallop stretch), thick at the shoulder -->
+    <path d="M 156 88 C 174 100 191 116 204 131 L 213 143 C 216 147 211 152 207 149 L 193 137 C 179 124 164 108 151 97 Z"/>
+    <path d="M 142 96 C 152 110 162 126 170 140 L 176 151 C 178 156 171 159 168 154 L 158 138 C 149 124 141 110 135 100 Z"/>
+    <!-- hind legs — extended back, thick at the haunch -->
+    <path d="M 96 96 C 82 107 66 119 51 127 L 39 133 C 34 136 30 130 35 127 L 47 117 C 61 106 76 95 89 88 Z"/>
+    <path d="M 110 100 C 102 114 93 129 82 142 L 73 152 C 69 156 64 152 67 147 L 77 132 C 86 119 94 106 100 97 Z"/>
+    <!-- tail — flowing locks -->
+    <path d="M 78 64 C 62 54 45 51 30 57 C 21 61 15 70 13 80 C 20 73 28 69 37 70 C 29 78 25 88 27 98 C 32 89 40 83 49 82 C 46 74 54 66 64 65 C 70 64 75 63 78 66 Z"/>
+  </g>
+
+  <!-- PAX — arcing over the top -->
+  <text font-family="'Iowan Old Style','Iowan Old Style BT','Lora',Georgia,serif" font-weight="500"
+        font-size="22" letter-spacing="10" fill="#5E5635">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">PAX</textPath>
+  </text>
+
+  <!-- RANCH HOUSE — arcing under the bottom -->
+  <text font-family="'Iowan Old Style','Iowan Old Style BT','Lora',Georgia,serif" font-weight="500"
+        font-size="13" letter-spacing="4.5" fill="#5E5635">
+    <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">RANCH HOUSE</textPath>
+  </text>
+</svg>

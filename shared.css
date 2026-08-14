@@ -65,8 +65,10 @@ nav.site .brand{
   display:flex;align-items:center;justify-content:center;
   width:104px;height:104px;                      /* hangs below the bar */
   background:var(--ivory);border-radius:50%;
-  box-shadow:0 6px 24px rgba(60,45,30,.14);
 }
+/* Shadow only where the circle hangs below the bar — the top half blends seamlessly
+   into the header. clip-path top = bar bottom (76px) minus badge top (16px). */
+nav.site .brand::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 6px 24px rgba(60,45,30,.16);clip-path:inset(60px -48px -48px -48px);z-index:-1}
 nav.site .brand img{width:94px;height:auto}
 nav.site ul{display:flex;gap:0;list-style:none;font-size:.8rem;text-transform:uppercase;letter-spacing:.045em;font-weight:400;align-items:center}
 nav.site .left-group{grid-column:1;grid-row:1;display:flex;align-items:center;gap:28px}
@@ -102,6 +104,7 @@ nav.site .menu-toggle span:nth-child(3){top:14px}
   nav.site{display:flex;justify-content:space-between;height:66px;padding:0 20px}
   body{padding-top:66px}
   nav.site .brand{width:76px;height:76px;margin-top:40px}
+  nav.site .brand::before{clip-path:inset(10px -36px -36px -36px)}  /* bar bottom (66px) minus badge top (56px) */
   nav.site .brand img{width:68px}
   nav.site ul.left,nav.site .right-group ul{display:none}
   nav.site .right-group{margin-left:auto;gap:0}

@@ -103,8 +103,8 @@ nav.site .menu-toggle span:nth-child(3){top:14px}
 @media(max-width:1024px){
   nav.site{display:flex;justify-content:space-between;height:66px;padding:0 20px}
   body{padding-top:66px}
-  nav.site .brand{width:70px;height:84px;margin-top:-3px;border-radius:16px}  /* top aligns with the Reserve button (13px) */
-  nav.site .brand::before{clip-path:inset(53px -36px -36px -36px)}  /* bar bottom (66px) minus badge top (13px) */
+  nav.site .brand{width:70px;height:84px;margin-top:-12px;border-radius:16px}  /* visible logo art top aligns with the Reserve button (13px); plate top 4px */
+  nav.site .brand::before{clip-path:inset(62px -36px -36px -36px)}  /* bar bottom (66px) minus plate top (4px) */
   nav.site .brand img{width:54px}
   nav.site ul.left,nav.site .right-group ul{display:none}
   nav.site .right-group{margin-left:auto;gap:0}
